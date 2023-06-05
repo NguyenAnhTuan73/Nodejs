@@ -1,13 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+const express = require('express');
 
-fs.readFile(path.join(__dirname ,'files', 'stater.txt'), 'utf-8', (err, data)=>{
-    if (err) throw err;
-    console.log(data);
+const app = express();
+const port = 8888;
+app.get('/', (req, res)=>{
+    res.send('Hello every body');
 })
-console.log('check');
-
-process.on('uncaughtException', err =>{
-    console.error('There was an uncaught error:', err);
-    process.exit(1);
+app.listen(port, () => {
+    console.log(`Server is running in port ${port}`)
 })
